@@ -160,11 +160,11 @@
                           </div>
                         </div>
                         
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="" method="" enctype="multipart/form-data">
                           <div class="row mb-0">
                             <label class="col-sm-3 col-form-label col-form-label-sm text-primary">File FP</label>
                             <div class="col-sm-5">
-                              <input type="file" class="form-control-file form-control-sm" id="filefaktur">
+                              <input type="file" name="files[]" class="form-control-file form-control-sm" id="filefaktur" multiple>
                             </div>
                             <div class="col-auto">
                               <button type="submit"  class="btnFP btn btn-secondary mb-3 btn-sm">Cek</button>
@@ -323,7 +323,7 @@
     var jumFP_DPP = 0;
     var jumFP_PPN = 0;
 
-    var parsefaktur = [];
+
     // $("#faktur_pj").on('click', '.btnFP', function(){
     //   fetch(`${appUrl}/read_qr?` + new URLSearchParams()
     //   )
@@ -338,6 +338,17 @@
     //   // document.getElementById("DPP_FP").value = jumFP_DPP;
     //   // document.getElementById("PPN_FP").value = jumFP_PPN;
     // })
+    
+    var parsefaktur = [];
+    const form = document.querySelector('form');
+    form.addEventListener('submit', event => {
+        const data = new FormData(form);
+        fetch(`${appUrl}/read_qr?`), {
+            method: 'POST',
+            body: new FormData(form)
+        }
+    });
+
     $('#modal3').on('shown.bs.modal', function (e) {
       const branchCode = $(e.relatedTarget).data('branch-code');
       selectedBranchCode = branchCode;

@@ -30,7 +30,7 @@ Route::group(['middleware' => ['supplier']], function () {
 
     Route::get('/get-sys-supp-site', [InputTTFController::class, 'getSysSuppSite']);
     Route::get('/get-ttf-data-bpb', [InputTTFController::class, 'getTtfDataBpb']);
-    Route::get('/read_qr', [InputTTFController::class, 'read_qr']);
+    Route::get('/read_qr', [InputTTFController::class, 'read_qr'])->name('read_qr');
 
     //coba
     // Route::post('/tambahfp2/{id1}', [InputTTFController::class, 'read_qr']);

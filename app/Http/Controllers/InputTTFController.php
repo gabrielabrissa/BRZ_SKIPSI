@@ -95,16 +95,13 @@ class InputTTFController extends Controller
 
         return response()->json($data);
     }
-    public function read_qr(Request $request)
+    public function read_qr()
     {   
-        $file = $request->file;
         $pdfParser = new Parser();
-        $pdf = $pdfParser->parseFile($file->path());
+        $pdf = $pdfParser->parseFile(public_path('efaktur.pdf'));
         $content = $pdf->getText();
-        $data = explode("\n",$content);
-        dd($data);
-        // return response()->json($data);
-
+        $dt = explode("\n",$content);
+        return response()->json($dt);
     }
 
     
