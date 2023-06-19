@@ -24,12 +24,17 @@ Route::group(['middleware' => ['supplier']], function () {
     Route::get('/home', [HomeController::class, 'index']);
     Route::get('/home/jk', [HomeController::class, 'downloadJK']);
     Route::get('/inputttf', [InputTTFController::class, 'inputttf']);
-    Route::get('/inputttf/pilihcabang/{id2}', [InputTTFController::class, 'pilihCabang'])->name('inputttf.pilihCabang');
-    // Route::post('/inputttf', [InputTTFController::class, 'simpan_bpb2']);
+    Route::get('/addttf/{id1}', [InputTTFController::class, 'addttf']);
+    Route::get('/tambahfp/{id1}', [InputTTFController::class, 'tambahfp']);
     Route::get('/download', [DownloadController::class, 'download']);
 
     Route::get('/get-sys-supp-site', [InputTTFController::class, 'getSysSuppSite']);
     Route::get('/get-ttf-data-bpb', [InputTTFController::class, 'getTtfDataBpb']);
+    Route::get('/read_qr', [InputTTFController::class, 'read_qr']);
+
+    //coba
+    // Route::post('/tambahfp2/{id1}', [InputTTFController::class, 'read_qr']);
+    // // Route::post('/tambahfp2/{id1}', [InputTTFController::class, 'read_qr']);
 });
 
 /*admin*/
