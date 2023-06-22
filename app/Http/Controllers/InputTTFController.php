@@ -59,17 +59,9 @@ class InputTTFController extends Controller
         ->where ('sys_mapp_supp.USER_ID','=',$ambil)
         ->where ('sys_supp_site.SUPP_BRANCH_CODE','=',$id1)
         ->get();
-        $a = "";
-        $b = "";
-        $c = "";
-        $d = "";
         return view('tambahfp', [
             "title" => "inputttf",
-            'fp' => $fp,
-            "a" => $a,
-            "b" => $b,
-            "c" => $c,
-            "d" => $d
+            'fp' => $fp
     
         ]);
     }
@@ -95,10 +87,30 @@ class InputTTFController extends Controller
 
         return response()->json($data);
     }
-    public function read_qr()
+    public function getTtfDataNoFP(Request $request)
+    {
+        $suppBranchCode = $request->supp_branch_code;
+        $ambil = auth()->user()->id;
+        $fp = DB::table('sys_supp_site')
+        ->join('sys_mapp_supp','sys_supp_site.SUPP_BRANCH_CODE','=','sys_mapp_supp.BRANCH_CODE')
+        ->join('users','users.id','=','sys_mapp_supp.USER_ID')
+        ->join('sys_supplier','sys_supplier.SUPP_ID','=','users.SUPP_ID')
+        ->where ('sys_mapp_supp.USER_ID','=',$ambil)
+        ->where('sys_supp_site.SUPP_BRANCH_CODE', $suppBranchCode)
+        ->select('sys_supp_site.SUPP_PKP_NUM')
+        ->groupBy('sys_supp_site.SUPP_PKP_NUM');
+
+        $data = DB::table('no_faktur')
+        ->whereIn('no_faktur.NPWP_PENJUAL',$fp)
+        ->get();
+
+        return response()->json($data);
+    }
+    public function read_qr(Request $request)
     {   
+        $file = $request->file;
         $pdfParser = new Parser();
-        $pdf = $pdfParser->parseFile(public_path('efaktur.pdf'));
+        $pdf = $pdfParser->parseFile($file->path());
         $content = $pdf->getText();
         $dt = explode("\n",$content);
         return response()->json($dt);

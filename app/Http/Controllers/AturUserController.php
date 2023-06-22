@@ -33,4 +33,15 @@ class AturUserController extends Controller
             'supp' => $supp,
         ]);
     }
+    public function getSysSupp(Request $request)
+    {
+        $suppp_id = $request-> spp_id;
+
+        $data = DB::table('sys_supp_site')
+        ->join('sys_supplier','sys_supplier.SUPP_ID','=','sys_supp_site.SUPP_ID')
+        ->where('sys_supp_site.SUPP_ID', $suppp_id)
+        ->get();
+
+        return response()->json($data);
+    }
 }

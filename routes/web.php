@@ -28,8 +28,9 @@ Route::group(['middleware' => ['supplier']], function () {
     Route::get('/tambahfp/{id1}', [InputTTFController::class, 'tambahfp']);
     Route::get('/download', [DownloadController::class, 'download']);
 
-    Route::get('/get-sys-supp-site', [InputTTFController::class, 'getSysSuppSite']);
     Route::get('/get-ttf-data-bpb', [InputTTFController::class, 'getTtfDataBpb']);
+    Route::get('/get-sys-supp-site', [InputTTFController::class, 'getSysSuppSite']);
+    Route::get('/get-ttf-data-nofp', [InputTTFController::class, 'getTtfDataNoFP']);
     Route::get('/read_qr', [InputTTFController::class, 'read_qr'])->name('read_qr');
 
     //coba
@@ -44,6 +45,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/aturlimit', [AturLimitController::class, 'aturlimit']);
     Route::get('/aturuser', [AturUserController::class, 'aturuser']);
     Route::get('/aturuser/adduser', [AturUserController::class, 'adduser']);
+    Route::get('/get-Sys-Supp', [AturUserController::class, 'getSysSupp']);
     Route::get('/datattf', [DataTTFController::class, 'datattf']);
     Route::get('/datasup', [DataTTFController::class, 'datasup']);
     Route::get('/datalampfp', [DataTTFController::class, 'datalampfp']);

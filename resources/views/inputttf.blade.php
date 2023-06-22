@@ -57,31 +57,31 @@
                         <span class="mb-0 text-sm"></span>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">1</span>
+                        <span class="text-secondary text-xs font-weight-bold"></span>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">230022129138</span>
+                        <span class="text-secondary text-xs font-weight-bold"></span>
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">SUBMITTED</span>
+                        <span class="badge badge-sm bg-gradient-success"></span>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">JAKARTA</span>
+                        <span class="text-secondary text-xs font-weight-bold"></span>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">28 September 2022</span>
+                        <span class="text-secondary text-xs font-weight-bold"></span>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">-</span>
+                        <span class="text-secondary text-xs font-weight-bold"></span>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">PT IMC IND</span>
+                        <span class="text-secondary text-xs font-weight-bold"></span>
                       </td>
                       <td class="align-middle text-center">
-                        <a href="#" class="text-decoration-none text-xs font-weight-bold">Download</a>
+                        <a href="#" class="text-decoration-none text-xs font-weight-bold"></a>
                       </td>
                       <td class="align-middle text-center">
-                        <a href="#" class="text-decoration-none text-xs font-weight-bold">Delete</a>
+                        <a href="#" class="text-decoration-none text-xs font-weight-bold"></a>
                       </td>
                     </tr>
                   </tbody>
@@ -150,7 +150,6 @@
                     <span class="text-secondary text-xs font-weight-bold">{{ $c->jumlah }}</span>
                   </td>
                   <td class="align-middle text-center">
-             
                   <a data-branch-code="{{ $c->BRANCH_CODE }}"class="openModal btn btn-primary btn-sm" href="/addttf/{{ $c->BRANCH_CODE }}">Pilih</a>
                   </td>
                 </tr>

@@ -138,9 +138,10 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="form-group">
+                        
                         <h6 class="font-weight-bolder mb-2">Tipe Faktur Pajak</h6>
                         <div class="col-sm-5">
-                          <select id="selection" onchange="disableFP(this)" class="form-select" aria-label="Pilih Tipe FP">
+                          <select id="selection" onchange="disableFP(this)" class="form-select" required>
                             <option selected>Pilih Tipe FP</option>
                             <option value="1">Standart</option>
                             <option value="2">Tanpa Faktur Pajak</option>
@@ -156,7 +157,7 @@
                               placeholder="Pilih No Faktur">
                           </div>
                           <div class="col-auto">
-                            <button type="submit" class="btn btn-secondary mb-3 btn-sm">Pilih No FP</button>
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal5">Pilih No FP
                           </div>
                         </div>
                         
@@ -175,8 +176,7 @@
                         <div class="row mb-2">
                           <label class="col-sm-3 col-form-label col-form-label-sm text-primary">Tanggal FP</label>
                           <div class="col-sm-5">
-                            <input type="date" class="form-control form-control-sm" id="tanggalfaktur"
-                              placeholder="date">
+                            <input type="date" class="form-control form-control-sm" id="tanggalfaktur">
                           </div>
                         </div>
 
@@ -189,21 +189,21 @@
                             <div class="col-sm-3 mb-1">
                               <input type="text" class="sum_TTF form-control form-control-sm" id= "DPP_FP">
                             </div>
-                            <label class="col-sm-2 col-form-label col-form-label-sm text-primary">Total DPP BPB</label>
-                            <div class="col-sm-3 mb-1">
-                              <input type="text" class="sum_TTF_BPB form-control form-control-sm" id= "Total_DPP_BPB">
-                            </div>
-                            <label class="col-sm-2 col-form-label col-form-label-sm text-primary ">Selisih DPP</label>
-                            <div class="col-sm-3 mb-1">
-                              <input type="text" class="sum_TTF form-control form-control-sm"  id= "Selisih_DPP">
-                            </div>
                             <label class="col-sm-2 col-form-label col-form-label-sm text-primary">PPN FP</label>
                             <div class="col-sm-3 mb-1">
                               <input type="text" class="sum_TTF form-control form-control-sm" id= "PPN_FP">
                             </div>
+                            <label class="col-sm-2 col-form-label col-form-label-sm text-primary">Total DPP BPB</label>
+                            <div class="col-sm-3 mb-1">
+                              <input type="text" class="sum_TTF_BPB form-control form-control-sm" id= "Total_DPP_BPB">
+                            </div>
                             <label class="col-sm-2 col-form-label col-form-label-sm text-primary">Total PPN BPB</label>
                             <div class="col-sm-3 mb-1">
                               <input type="text" class="sum_TTF_BPB form-control form-control-sm" id= "Total_PPN_BPB">
+                            </div>
+                            <label class="col-sm-2 col-form-label col-form-label-sm text-primary ">Selisih DPP</label>
+                            <div class="col-sm-3 mb-1">
+                              <input type="text" class="sum_TTF form-control form-control-sm"  id= "Selisih_DPP">
                             </div>
                             <label class="col-sm-2 col-form-label col-form-label-sm text-primary">Selisih PPN</label>
                             <div class="col-sm-3 mb-1">
@@ -224,9 +224,8 @@
                 <div class="card">
                   <div class="card-header">
                     <div class="d-flex align-items-center">
-                      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal4">Add
+                      <button type="button" class="btn btn-primary btn-sm" id="btnmodal4" data-toggle="modal" data-target="#modal4">Add
                         BPB</button>
-                      {{-- <button class="btn btn-danger btn-sm ms-1">Remove</button> --}}
                     </div>
                   </div>
                   <div class="card-body px-0 pt-0 pb-2">
@@ -302,11 +301,52 @@
               </div>
             </div>
           </div>
+        </div>
           <div class="modal-footer ">
             <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+          </div>
+      </div>
+    </div>
+  </div>
 
+  <div id="modal5" class="modal fade" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content ">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title">Pilih No Faktur Pajak</h5>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="card mb-0">
+                <div class="card-body px-0 pt-0 pb-0">
+                  <div class="table-responsive p-0">
+                    <table class="table table-bordered -mb-1">
+                      <thead>
+                        <tr>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">No</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Nomor Faktur Pajak
+                          </th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Nama Penjual
+                          </th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Jumlah DPP
+                          </th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Jumlah PPN</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="body-modal5">
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+          <div class="modal-footer ">
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+          </div>
       </div>
     </div>
   </div>
@@ -314,14 +354,19 @@
   <script>
     var appUrl = "{{env('http://ttfcp.test')}}";
     var selectedBranchCode = null;
+    var selectedSupID = null;
 
     var optionsBPB = []; // array of BPB from api
     var selectedBPB = []; // array of selected BPB
     var parsefaktur = [];
+    var optionsNoFP = [];
+    var selectedFP = [];
     var sumBPB_DPP = 0;
     var sumBPB_PPN = 0;
     var jumFP_DPP = 0;
     var jumFP_PPN = 0;
+    var selisihDPP = 0;
+    var selisihPPN = 0;
 
 
     // $("#faktur_pj").on('click', '.btnFP', function(){
@@ -343,13 +388,20 @@
     const form = document.querySelector('form');
     form.addEventListener('submit', event => {
         const data = new FormData(form);
-        fetch(`${appUrl}/read_qr?`), {
+        fetch(`${appUrl}/read_qr`), {
             method: 'POST',
             body: new FormData(form)
         }
+        .then(response => response.json())
+        .then(dt => {
+          parsefaktur = dt;
+          console.log(parsefaktur);
+        })        
+          
     });
 
     $('#modal3').on('shown.bs.modal', function (e) {
+      document.getElementById("btnmodal4").disabled = true;
       const branchCode = $(e.relatedTarget).data('branch-code');
       selectedBranchCode = branchCode;
       fetch(`${appUrl}/get-sys-supp-site?` + new URLSearchParams({
@@ -359,7 +411,82 @@
         .then(response => response.json()).
         catch(error => alert(error))
     })
+    $('#modal5').on('shown.bs.modal', function (e) {
+      fetch(`${appUrl}/get-ttf-data-nofp?` + new URLSearchParams({
+        supp_branch_code: selectedBranchCode
+        })
+      )
+        .then(response => response.json())
+        .then(data => {
+          console.log('data', data);
+          data.forEach((el,index) => {
+            let number = index + 1;
+            let row;
+            row =`
+            <tr>
+              <td class="align-middle text-center">
+                <span class="text-secondary text-xs font-weight-bold">${number}</span>
+              </td>
+              <td class="align-middle text-center">
+                <span class="text-secondary text-xs font-weight-bold">${el.NOMOR_FAKTUR}</span>
+              </td>
+              <td class="align-middle text-center">
+                <span class="text-secondary text-xs font-weight-bold">${el.NAMA_PENJUAL}</span>
+              </td>
+              <td class="align-middle text-center">
+                <span class="text-secondary text-xs font-weight-bold">${rupiah(el.JUMLAH_DPP)}</span>
+              </td>
+              <td class="align-middle text-center">
+                <span class="text-secondary text-xs font-weight-bold">${rupiah(el.JUMLAH_PPN)}</span>
+              </td>
+              <td class="align-middle text-center">
+                  <button class="nofpPilih btn btn-primary btn-sm" id ="${el.NOMOR_FAKTUR}">Pilih</button>
+                  </div>
+              </td>
+            </tr>
+            `;
+            $('#body-modal5').append(row);
+            
+          })
 
+          optionsNoFP = data;
+        }).
+        catch(error => alert(error))
+    })
+         
+    $(document).on('click', '.nofpPilih', function(e){
+      $("#modal5").modal('hide');
+      $('#body-modal5').empty();
+      const id_nofp = $(this).attr('id');
+      const selected = optionsNoFP.find(el => el.NOMOR_FAKTUR === id_nofp);
+      const isExist = selectedFP.find(el => el.NOMOR_FAKTUR === id_nofp);
+      if (!isExist) { 
+        selectedFP.splice(0); 
+        selectedFP.push(selected);
+        jumFP_DPP = selectedFP.map((el) => el.JUMLAH_DPP).reduce((sum, current)=> sum + current,0);
+        jumFP_PPN = selectedFP.map((el) => el.JUMLAH_PPN).reduce((sum, current)=> sum + current,0);
+      }
+      if(jumFP_DPP==0){
+        selisihDPP = sumBPB_DPP;
+        selisihPPN = sumBPB_PPN;
+      } else{
+        selisihDPP = jumFP_DPP - sumBPB_DPP;
+        selisihPPN = jumFP_PPN - sumBPB_PPN;
+      }
+
+
+      console.log('selectedFP', selectedFP)
+      console.log('jumFP_DPP', jumFP_DPP)
+      console.log('jumFP_PPN', jumFP_PPN)
+      document.getElementById("DPP_FP").value = rupiah(jumFP_DPP);
+      document.getElementById("PPN_FP").value = rupiah(jumFP_PPN);
+      document.getElementById("nofaktur").value = selectedFP.map((el) => el.NOMOR_FAKTUR);
+      document.getElementById("tanggalfaktur").value = selectedFP.map((el) => el.TANGGAL_FAKTUR);
+      document.getElementById("Selisih_DPP").value = rupiah(selisihDPP);
+      document.getElementById("Selisih_PPN").value = rupiah(selisihPPN);
+      document.getElementById("btnmodal4").disabled = false;
+
+    })
     $('#modal4').on('shown.bs.modal', function (e) {
       const branchCode = selectedBranchCode;
         fetch(`${appUrl}/get-ttf-data-bpb?` + new URLSearchParams({
@@ -386,10 +513,10 @@
                 <span class="text-secondary text-xs font-weight-bold">${el.FLAG_PPN}</span>
               </td>
               <td class="align-middle text-center">
-                <span class="text-secondary text-xs font-weight-bold">${el.BPB_DPP}</span>
+                <span class="text-secondary text-xs font-weight-bold">${rupiah(el.BPB_DPP)}</span>
               </td>
               <td class="align-middle text-center">
-                <span class="text-secondary text-xs font-weight-bold">${el.BPB_TAX}</span>
+                <span class="text-secondary text-xs font-weight-bold">${rupiah(el.BPB_TAX)}</span>
               </td>
               
             `;
@@ -429,7 +556,6 @@
             // check if selectedBPB already has the selected BPB
             const isExist = selectedBPB.find(el => el.BPB_NUMBER === bpbNumber);
             if (!isExist) {      
-              
                 selectedBPB.push(selected);
                 sumBPB_DPP = selectedBPB.map((el) => el.BPB_DPP).reduce((sum, current)=> sum + current,0);
                 sumBPB_PPN = selectedBPB.map((el) => el.BPB_TAX).reduce((sum, current)=> sum + current,0);
@@ -439,15 +565,24 @@
             const index = selectedBPB.findIndex(el => el.BPB_NUMBER === bpbNumber);
             selectedBPB.splice(index, 1);
             sumBPB_DPP = selectedBPB.map((el) => el.BPB_DPP).reduce((sum, current)=> current - sum,0);
-            sumBPB_PPN = selectedBPB.map((el) => el.BPB_TAX).reduce((sum, current)=> current - sum,0);
-            
+            sumBPB_PPN = selectedBPB.map((el) => el.BPB_TAX).reduce((sum, current)=> current - sum,0);     
         }
+        if(jumFP_DPP==0){
+              selisihDPP = sumBPB_DPP;
+              selisihPPN = sumBPB_PPN;
+            } else{
+              selisihDPP = jumFP_DPP - sumBPB_DPP;
+              selisihPPN = jumFP_PPN - sumBPB_PPN;
+            }
 
         console.log('selectedBPB', selectedBPB)
         console.log('sumBPB_DPP', sumBPB_DPP)
         console.log('sumBPB_PPN', sumBPB_PPN)
-        document.getElementById("Total_DPP_BPB").value = sumBPB_DPP;
-        document.getElementById("Total_PPN_BPB").value = sumBPB_PPN;
+        document.getElementById("Total_DPP_BPB").value = rupiah(sumBPB_DPP);
+        document.getElementById("Total_PPN_BPB").value = rupiah(sumBPB_PPN);
+        document.getElementById("Selisih_DPP").value = rupiah(selisihDPP);
+        document.getElementById("Selisih_PPN").value = rupiah(selisihPPN);
+        
     })
 
     $("#selectedBPB").on('click', '.bpbDelete', function(){
@@ -457,12 +592,21 @@
       selectedBPB.splice(index, 1);
       sumBPB_DPP = selectedBPB.map((el) => el.BPB_DPP).reduce((sum, current)=> sum + current,0);
       sumBPB_PPN = selectedBPB.map((el) => el.BPB_TAX).reduce((sum, current)=> sum + current,0);
+      if(jumFP_DPP==0){
+              selisihDPP = sumBPB_DPP;
+              selisihPPN = sumBPB_PPN;
+            } else{
+              selisihDPP = jumFP_DPP - sumBPB_DPP;
+              selisihPPN = jumFP_PPN - sumBPB_PPN;
+            }
 
       console.log('selectedBPB', selectedBPB)
       console.log('sumBPB_DPP', sumBPB_DPP)
       console.log('sumBPB_PPN', sumBPB_PPN)
-      document.getElementById("Total_DPP_BPB").value = sumBPB_DPP;
-      document.getElementById("Total_PPN_BPB").value = sumBPB_PPN;
+      document.getElementById("Total_DPP_BPB").value = rupiah(sumBPB_DPP);
+      document.getElementById("Total_PPN_BPB").value = rupiah(sumBPB_PPN);      
+      document.getElementById("Selisih_DPP").value = rupiah(selisihDPP);
+      document.getElementById("Selisih_PPN").value = rupiah(selisihPPN);
 
     })
   
@@ -479,10 +623,10 @@
                   <span class="text-secondary text-xs font-weight-bold">${el.BPB_DATE}</span>
                 </td>
                 <td class="align-middle text-center">
-                  <span class="text-secondary text-xs font-weight-bold">${el.BPB_DPP}</span>
+                  <span class="text-secondary text-xs font-weight-bold">${rupiah(el.BPB_DPP)}</span>
                 </td>
                 <td class="align-middle text-center">
-                  <span class="text-secondary text-xs font-weight-bold">${el.BPB_TAX}</span>
+                  <span class="text-secondary text-xs font-weight-bold">${rupiah(el.BPB_TAX)}</span>
                 </td>
                 <td class="align-middle text-center">
                   <button class="bpbDelete btn btn-danger btn-sm" id ="${el.BPB_NUMBER}">Delete</button>
@@ -495,18 +639,28 @@
           })
         })
 
+     
+
     function disableFP(faktur) {
     console.log(faktur.value)
     if(faktur.value == 1){
       document.getElementById("nofaktur").disabled = false;
       document.getElementById("filefaktur").disabled = false;
       document.getElementById("tanggalfaktur").disabled = false;
+      document.getElementById("btnmodal4").disabled = true;
     }else {
       document.getElementById("nofaktur").disabled = true;
       document.getElementById("filefaktur").disabled = true;
       document.getElementById("tanggalfaktur").disabled = true;
+      document.getElementById("btnmodal4").disabled = false;
     }
   };
+
+  const rupiah = (number)=>{
+    return new Intl.NumberFormat({
+      style: "currency"
+    }).format(number);
+  }
   </script>
   @endsection
 

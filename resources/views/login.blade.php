@@ -38,6 +38,9 @@
              
             <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-start flex-column">
               <div class="position-relative h-100 m-3 px-7 bg-gradient-primary border-radius-lg d-flex flex-column justify-content-center overflow-hidden">
+                <center>
+                  <img src="/assets/img/imc.png"  height="41" width="60" alt="image">
+                  </center>
                 <h1 class="mt-5 text-white font-weight-bolder position-relative">TTF</h1>
                 <h3 class="text-white position-relative">Tanda Tukar Faktur</h3>
               </div>
