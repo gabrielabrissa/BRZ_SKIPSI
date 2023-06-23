@@ -29,11 +29,11 @@ class InputTTFController extends Controller
         ->where ('sys_mapp_supp.USER_ID','=',$ambil)
         ->get();
 
-        
+
         return view('inputttf', [
             "title" => "inputttf",
             'cbg' => $cbg,
-    
+
         ]);
     }
     public function addttf($id1){
@@ -47,10 +47,10 @@ class InputTTFController extends Controller
         return view('addttf', [
             "title" => "inputttf",
             'fp' => $fp,
-    
+
         ]);
     }
-    
+
     public function tambahfp($id1){
         $ambil = auth()->user()->id;
         $fp = DB::table('sys_supp_site')
@@ -62,7 +62,7 @@ class InputTTFController extends Controller
         return view('tambahfp', [
             "title" => "inputttf",
             'fp' => $fp
-    
+
         ]);
     }
 
@@ -107,18 +107,29 @@ class InputTTFController extends Controller
         return response()->json($data);
     }
     public function read_qr(Request $request)
-    {   
+    {
         $file = $request->file;
         $pdfParser = new Parser();
         $pdf = $pdfParser->parseFile($file->path());
         $content = $pdf->getText();
-        $dt = explode("\n",$content);
-        return response()->json($dt);
+        $explode = explode("\n",$content);
+        $noFaktur = $explode[7];
+        $noFaktur = str_replace('Kode dan Nomor Seri Faktur Pajak : ', '', $noFaktur);
+
+        return response()->json([
+            'no_faktur' => $noFaktur
+        ]);
     }
 
-    
+    public function createTtf(Request $request)
+    {
+        $data = $request->all();
+        return response()->json($data);
+    }
+
+
     // public function read_qr(Request $request)
-    // {   
+    // {
     //     $ambil = auth()->user()->id;
     //     $file = $request->file;
     //     $pdfParser = new Parser();
@@ -151,7 +162,7 @@ class InputTTFController extends Controller
     //         "c" => $c,
     //         "d" => $d
 
-    
+
     //     ]);
 
     // }
