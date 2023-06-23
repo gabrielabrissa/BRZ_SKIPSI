@@ -31,7 +31,8 @@ Route::group(['middleware' => ['supplier']], function () {
     Route::get('/get-ttf-data-bpb', [InputTTFController::class, 'getTtfDataBpb']);
     Route::get('/get-sys-supp-site', [InputTTFController::class, 'getSysSuppSite']);
     Route::get('/get-ttf-data-nofp', [InputTTFController::class, 'getTtfDataNoFP']);
-    Route::get('/read_qr', [InputTTFController::class, 'read_qr'])->name('read_qr');
+    Route::post('/read_qr', [InputTTFController::class, 'read_qr'])->name('read_qr');
+    Route::post('/create-ttf', [InputTTFController::class, 'createTtf']);
 
     //coba
     // Route::post('/tambahfp2/{id1}', [InputTTFController::class, 'read_qr']);
