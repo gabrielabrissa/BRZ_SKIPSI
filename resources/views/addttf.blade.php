@@ -71,7 +71,6 @@
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">PPN Faktur Pajak </th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Total Bundel BPB  </th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Selisih DPP </th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Tanggal Faktur Pajak</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">FLAG GO BPB </th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">FLAG PPN BPB </th>
                               </tr>
@@ -80,9 +79,6 @@
                               <tr>
                                 <td class="align-middle text-center">
                                   <span class="text-secondary text-xs font-weight-bold " ></span>
-                                </td>
-                                <td class="align-middle text-center">
-                                  <span class="text-secondary text-xs font-weight-bold"></span>
                                 </td>
                                 <td class="align-middle text-center">
                                   <span class="text-secondary text-xs font-weight-bold"></span>
@@ -153,7 +149,7 @@
                         <div class="row mb-0">
                           <label class="col-sm-3 col-form-label col-form-label-sm text-primary">No FP</label>
                           <div class="col-sm-5">
-                            <input type="text" class="form-control form-control-sm" id="nofaktur"
+                            <input type="text" class="form-control form-control-sm" id="nofaktur" name="FP[]"
                               placeholder="Pilih No Faktur">
                           </div>
                           <div class="col-auto">
@@ -176,7 +172,7 @@
                         <div class="row mb-2">
                           <label class="col-sm-3 col-form-label col-form-label-sm text-primary">Tanggal FP</label>
                           <div class="col-sm-5">
-                            <input type="date" class="form-control form-control-sm" id="tanggalfaktur">
+                            <input type="date" class="form-control form-control-sm" name="FP[]" id="tanggalfaktur">
                           </div>
                         </div>
 
@@ -187,27 +183,27 @@
                           <div class="row ">
                             <label class="col-sm-2 col-form-label col-form-label-sm text-primary">DPP FP</label>
                             <div class="col-sm-3 mb-1">
-                              <input type="text" class="sum_TTF form-control form-control-sm" id= "DPP_FP">
+                              <input type="text" class="sum_TTF form-control form-control-sm" id= "DPP_FP" name="FP[]">
                             </div>
                             <label class="col-sm-2 col-form-label col-form-label-sm text-primary">PPN FP</label>
                             <div class="col-sm-3 mb-1">
-                              <input type="text" class="sum_TTF form-control form-control-sm" id= "PPN_FP">
+                              <input type="text" class="sum_TTF form-control form-control-sm" id= "PPN_FP" name="FP[]">
                             </div>
                             <label class="col-sm-2 col-form-label col-form-label-sm text-primary">Total DPP BPB</label>
                             <div class="col-sm-3 mb-1">
-                              <input type="text" class="sum_TTF_BPB form-control form-control-sm" id= "Total_DPP_BPB">
+                              <input type="text" class="sum_TTF_BPB form-control form-control-sm" id= "Total_DPP_BPB" name="FP[]">
                             </div>
                             <label class="col-sm-2 col-form-label col-form-label-sm text-primary">Total PPN BPB</label>
                             <div class="col-sm-3 mb-1">
-                              <input type="text" class="sum_TTF_BPB form-control form-control-sm" id= "Total_PPN_BPB">
+                              <input type="text" class="sum_TTF_BPB form-control form-control-sm" id= "Total_PPN_BPB" name="FP[]">
                             </div>
                             <label class="col-sm-2 col-form-label col-form-label-sm text-primary ">Selisih DPP</label>
                             <div class="col-sm-3 mb-1">
-                              <input type="text" class="sum_TTF form-control form-control-sm"  id= "Selisih_DPP">
+                              <input type="text" class="sum_TTF form-control form-control-sm"  id= "Selisih_DPP" name="FP[]">
                             </div>
                             <label class="col-sm-2 col-form-label col-form-label-sm text-primary">Selisih PPN</label>
                             <div class="col-sm-3 mb-1">
-                              <input type="text" class="sum_TTF form-control form-control-sm" id= "Selisih_PPN">
+                              <input type="text" class="sum_TTF form-control form-control-sm" id= "Selisih_PPN" name="FP[]">
                             </div>
                           </div>
                         </div>
@@ -257,7 +253,7 @@
             <!--  End Tabel BPB -->
             <div class="modal-footer ">
               <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary btn-sm">Save</button>
+              <button type="button" name="button" class="btn btn-primary btn-sm">Save</button>
             </div>
           </div>
         </div>
@@ -356,8 +352,8 @@
     var selectedBranchCode = null;
     var selectedSupID = null;
 
-    var optionsBPB = []; // array of BPB from api
-    var selectedBPB = []; // array of selected BPB
+    var optionsBPB = [];
+    var selectedBPB = []; 
     var parsefaktur = [];
     var optionsNoFP = [];
     var selectedFP = [];
@@ -523,14 +519,14 @@
             if(indexBPB) {
               cb =  `<td class="align-middle text-center">
                 <div class="form-check" id="input_cb">
-                  <input class='form-check-input checklist-bpb' type='checkbox' id='${el.BPB_NUMBER}' name='cb_bpb' checked>
+                  <input class='form-check-input checklist-bpb' type='checkbox' id='${el.BPB_NUMBER}' checked>
                 </div>
               </td>
             </tr> `;
             }else{
               cb =  `<td class="align-middle text-center">
                 <div class="form-check" id="input_cb">
-                  <input class='form-check-input checklist-bpb' type='checkbox' id='${el.BPB_NUMBER}' name='cb_bpb'>
+                  <input class='form-check-input checklist-bpb' type='checkbox' id='${el.BPB_NUMBER}'>
                 </div>
               </td>
             </tr> `;
@@ -639,7 +635,7 @@
           })
         })
 
-     
+
 
     function disableFP(faktur) {
     console.log(faktur.value)
